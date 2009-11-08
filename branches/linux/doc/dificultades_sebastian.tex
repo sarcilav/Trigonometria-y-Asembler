@@ -1,0 +1,9 @@
+
+El mayor dificultad fue escoger el ensamblador correcto.
+Al principio intentamos mucho con fasm pero en vano, ponía mucho problema en el uso de las cabeceras y en la generación de código objeto sin mencionar que los errores que encontraba y devolvía eran casi incomprensibles.
+Luego cuando tomamos la decisión de ensayar Gnu AS, funciona a las mil maravillas pero en sintaxis AT\&T, que a mi parecer es horrible, y aun asi usando el flag .intel\_syntax, no funcionaba nuestro programa escrito en asembler.
+Pero en realidad todo empezó a funcionar con Netwide Assembler la sintaxis es intel por defecto y aparte de eso para ensamblar permite usar flags para distinguir el tipo de objeto que se debe hacer(-elf -macho). 
+\begin{flushright} 
+	\itshape{-Sebastián Arcila Valenzuela}
+\end{flushright}
+

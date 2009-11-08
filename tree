@@ -1,0 +1,98 @@
+trigo_assembla/
+|-- branches
+|   |-- linux
+|   |   |-- app
+|   |   |   |-- Makefile
+|   |   |   |-- img
+|   |   |   |-- interfaz.glade
+|   |   |   |-- trigonometria
+|   |   |   `-- trigonometria.c
+|   |   |-- doc
+|   |   |   |-- analisis_disenho.tex
+|   |   |   |-- dificultades_ruben.tex
+|   |   |   |-- dificultades_sebastian.tex
+|   |   |   |-- dificultades_sergio.tex
+|   |   |   |-- especificaciones.tex
+|   |   |   |-- especificaciones_linux.tex
+|   |   |   |-- especificaciones_mac.tex
+|   |   |   |-- final.aux
+|   |   |   |-- final.log
+|   |   |   |-- final.pdf
+|   |   |   |-- final.tex
+|   |   |   |-- ieee.cls
+|   |   |   |-- opinion_ruben.tex
+|   |   |   |-- opinion_sebastian.tex
+|   |   |   `-- opinion_sergio.tex
+|   |   `-- lib
+|   |       |-- libtrigo.so -> src/libtrigo.so
+|   |       |-- src
+|   |       |   |-- compile
+|   |       |   |-- examples
+|   |       |   |   |-- printf1
+|   |       |   |   |   |-- nasm
+|   |       |   |   |   |-- nasm.o
+|   |       |   |   |   `-- nasm.s
+|   |       |   |   |-- printf2
+|   |       |   |   |   |-- nasm
+|   |       |   |   |   |-- nasm.o
+|   |       |   |   |   `-- nasm.s
+|   |       |   |   `-- printff
+|   |       |   |       |-- nasm
+|   |       |   |       `-- nasm.o
+|   |       |   |-- libtrigo.so
+|   |       |   |-- trigo.o
+|   |       |   `-- trigo.s
+|   |       `-- trigo.h
+|   `-- mac
+|       |-- Untitled2
+|       |   |-- English.lproj
+|       |   |   |-- InfoPlist.strings
+|       |   |   `-- MainMenu.xib
+|       |   |-- Info.plist
+|       |   |-- Trigo.h
+|       |   |-- Trigo.m
+|       |   |-- Untitled2.xcodeproj
+|       |   |   |-- TemplateIcon.icns
+|       |   |   |-- mela.mode1v3
+|       |   |   |-- mela.pbxuser
+|       |   |   `-- project.pbxproj
+|       |   |-- Untitled2_Prefix.pch
+|       |   |-- compile_run_script.sh
+|       |   |-- main.m
+|       |   |-- nasm_dll.s
+|       |   `-- version.plist
+|       `-- doc
+|           |-- dificultades_ruben.tex
+|           |-- dificultades_sergio.tex
+|           |-- especificaciones_mac.tex
+|           |-- final.tex
+|           |-- ieee.cls
+|           |-- opinion_ruben.tex
+|           `-- opinion_sergio.tex
+|-- tree
+`-- trunk
+    |-- app
+    |   |-- Makefile
+    |   |-- img
+    |   |-- interfaz.glade
+    |   `-- trigonometria.c
+    |-- doc
+    |   |-- instruction Set AM.pdf
+    |   |-- instruction Set NZ.pdf
+    |   `-- intelinstructionformat.pdf
+    |-- ejemplos_asm
+    |   `-- sumaFasm.s
+    |-- ejemplos_c
+    |   |-- asm.s
+    |   |-- fun_arcila
+    |   |-- fun_arcila.cc
+    |   |-- fun_arcila.s
+    |   |-- main.c
+    |   `-- trigo.asm
+    `-- lib
+        `-- src
+            |-- gas.s
+            |-- trigo.s
+            `-- trigolib.asm
+
+24 directories, 71 files

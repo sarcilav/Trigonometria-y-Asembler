@@ -1,0 +1,43 @@
+\subsection{Mac OS X.5}
+% especificaciones_mac.tex
+%
+%  Created by Sergio on 2009-03-18.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%
+%\documentclass[]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+
+%\usepackage{listings}
+
+%\begin{document}
+
+Para usar el código de las funciones trigonométricas sobre Mac OS X Leopard, se debe primero generar un archivo objeto que tiene por formato Mach-O, un equivalente al ELF en Linux, en el cual aparecen todas librerías y programas. El objeto Mach-O puede tener código que puede ser `linkeado' dinámica y estáticamente.
+
+Este objeto con los símbolos (en este caso las funciones) se crea con el ensamblador de NASM de la siguiente forma: 
+\begin{lstlisting}[language=bash]
+ $ nasm -f macho -o nasm.o nasm.s 
+\end{lstlisting}
+Después del cual obtenemos el objeto Mach-O que podremos usar en nuestro proyecto. El trabajo en OS X para probar la librería se dio en dos casos diferentes, el primero para probarla con una aplicación de línea de comando en Objective-C y la segunda segunda en una aplicación con interfaz gráfica usando Objective-C y Cocoa en donde para los dos cosos desde Objective-C las funciones de la librería se invocan de la misma forma que en C/C++, usando:\begin{lstlisting}[language=C]
+extern float seno();
+extern float coseno();
+extern float tangente();
+\end{lstlisting}
+en los encabezados.
+Para el caso de la aplicación en línea de comando la forma más efectiva para obtener el ejecutable es compilando el proyecto junto con el archivo objeto generado por NASM de la siguiente forma.
+\begin{lstlisting}[language=bash]
+ $ gcc Proyecto.m nasm.o -o ejecutable \ 
+ 	-framework Foundation
+\end{lstlisting}
+Para luego simplemente ejecutarlo.
+Cuando se trabaja en Xcode, basta con importar el archivo objeto al proyecto y trabajar de la misma forma que se haría con la aplicación de línea de comando.
+Existe la posibilidad de compilar y ejecutar el proyecto de Xcode mediante línea de comandos de la siguiente forma:
+\begin{lstlisting}[language=bash]
+ $ xcodebuild clean build install -activetarget \
+ 	-activeconfiguration
+\end{lstlisting}
+pero de todas formas se necesita importar el objeto generado por NASM desde Xcode.\\
+
+{\bfseries NOTA:} El archivo `trigo.s' en Linux y `nasm\_dll.s' en OS X tienen una pequeña diferencia, ya que el ensamblador NASM de Linux permite que para las operaciones de flotantes se deje implícito el campo de parámetros para indicar que se está trabajando con las primeras direcciones de la pila, cosa que se debe dejar explícita en OS X, esa es la mayor diferencia en cuanto al código en ensamblador que se debe tener en cuenta para obtener la portabilidad de esta librería entre los dos sistemas operativos.
+
+%\end{document}

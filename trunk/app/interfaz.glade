@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<glade-interface>
+  <widget class="GtkWindow" id="wPpal">
+    <property name="title" translatable="yes">Practica 1 - Sebastian - Sergio - Ruben</property>
+    <property name="window_position">center-always</property>
+    <property name="default_width">400</property>
+    <property name="default_height">200</property>
+    <property name="destroy_with_parent">True</property>
+    <child>
+      <widget class="GtkFixed" id="fixed">
+        <property name="visible">True</property>
+        <child>
+          <widget class="GtkEntry" id="entrAngulo">
+            <property name="width_request">190</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+          </widget>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">80</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkComboBox" id="cmbFunciones">
+            <property name="width_request">190</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="tooltip" translatable="yes">Campo para escojer la funci&#xF3;n trigonometrica</property>
+            <property name="items" translatable="yes">Seno
+Coseno
+Tangente</property>
+          </widget>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">40</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label1">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Funci&#xF3;n</property>
+          </widget>
+          <packing>
+            <property name="x">70</property>
+            <property name="y">40</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label2">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">&#xC1;ngulo</property>
+          </widget>
+          <packing>
+            <property name="x">70</property>
+            <property name="y">80</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="lAns">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+          </widget>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">140</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkButton" id="boton">
+            <property name="label" translatable="yes">Calcular</property>
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </widget>
+          <packing>
+            <property name="x">70</property>
+            <property name="y">140</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</glade-interface>

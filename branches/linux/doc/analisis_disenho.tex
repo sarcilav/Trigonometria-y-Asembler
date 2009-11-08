@@ -1,0 +1,66 @@
+\section{Detalles de diseño de construcción}
+
+Podemos decir que un algoritmo trivial para atacar las series de taylor seria el siguiente, tomemos como ejemplo de aquí en adelante la función seno:
+\begin{lstlisting}[language=C++]
+float sen(int x, int n)
+//n numero de iteraciones 
+{
+ float xx = to_radianes(x);
+ float ans = 0;
+ for(int i = 0; i<n;++i)
+ {
+  ans += pow(-1,i)*pow(xx,2i+1)/(2i+1)!;
+ }
+ return ans;
+}
+\end{lstlisting}
+
+Pero como podemos notar hay varias acotaciones que hacer a este código, primero no es necesario tener una función pow, ni una función factorial, puesto que cuando salgo de la iteración $m,(m>0)$ y paso a la iteración $m+1$, tenemos ya calculado hasta $xx^{2m+1}$ y el valor que necesitamos es $xx^{2m+3}$, entonces bastaría con solo multiplicar por $xx^{2}$  a $xx^{2m+1}$ para obtener el valor en $m+1$, casi de igual manera para el factorial cuando entramos en la iteración $m+1$ ya tenemos previamente el valor de $(2m+1)!$, y si nos fijamos el valor que necesitamos es $(2m+3)!$ que es igual a $(2m+1)!(2m+2)(2m+3)$, y para la situación del signo simplemente es en cada iteración hacer $signo = \neg signo$, y voila! no necesitamos funciones externas que desperdicien cálculos y tiempo; obteniendo algo similar a esto:
+
+\begin{lstlisting}[language=C++]
+float seno(int x, int n)
+{
+ float xx=to_radianes(x);
+ float ans=0;
+ float factorial=1;
+ float acum_x2n=xx;
+ int sign = -1;
+ for(int i = 1; i<n;++i)
+ {
+   sign *= -1;
+   ans += sign*acum_x2n/factorial;
+   acum_x2n*=xx*xx;
+   factorial*=(2*i)*(2*i+1);
+ }
+ return ans;
+}
+
+\end{lstlisting}
+También vale la pena resaltar que los tipos de datos de factorial y de acum\_x2n es de tipo flotante, por que por obvias razones en números enteros da overflow para factorial y ademas los radianes ($xx$) que vamos a usar tienen precisión flotante.
+
+Si lo notamos bien de la misma manera podemos deducir el siguiente algoritmo para coseno:
+\begin{lstlisting}[language=C++]
+float coseno(int x,int n)
+{
+ float xx=to_radianes(x);
+ float ans=0;
+ float factorial=1;
+ float acum_x2n=1;
+ int sign = -1;
+ for(int i = 1; i<n;++i)
+ {
+  sign *= -1;
+  ans += sign*acum_x2n/factorial;
+  acum_x2n*=xx*xx;
+  factorial*=(2*i-1)*(2*i);
+ }
+ return ans;
+}
+
+\end{lstlisting}
+
+Ahora bien la operación de pasar de grados a radianes es lo más simple de este mundo, es simplemente multiplicar los grados por el factor de conversión que es ${{\pi}\over{180}} = 0.017453293$. Y estás serian todas la anotaciones respecto al diseño del algoritmo.
+
+
+
+

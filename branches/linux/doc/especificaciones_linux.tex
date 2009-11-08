@@ -1,0 +1,19 @@
+\subsection{GNU/Linux}
+
+Usamos nasm(NASM version 2.05.01 compiled on Nov  5 2008) para ensamblar nuestro código y generar el código objeto que se linkearia como una  Dynamically linked shared object libraries (.so)  con gcc (gcc versión 4.3.3 (Ubuntu 4.3.3-5ubuntu4) ).
+Para ensamblar:
+\begin{lstlisting}[language=bash]
+nasm -f elf -o trigo.o trigo.s 
+\end{lstlisting}
+Para generar el .so:
+\begin{lstlisting}[language=bash]
+gcc -shared trigo.o -o libtrigo.so
+\end{lstlisting}
+Después de esto libtrigo.so debe ser llevado a /usr/lib y ya simplemente para compilar algo que haga uso de nuestra librería con gcc, solo necesitamos colocar -ltrigo en los flags de compilación y agregar trigo.h al directo de los include de la distribución en particular, en nuestro caso /usr/include, y agregar la cabecera \#$include<trigo.h>$ en el código en particular.
+
+Las dependencias necesarias son: libglade2-dev libgtk2.0-bin.
+
+Dependencias para construir desde los fuentes: libglade2-dev libgtk2.0-bin gcc make nasm
+
+Para más detalles mirar la aplicación piloto que se puede encontrar en \url{http://code.assembla.com/trigo_assembla/subversion/nodes/branches/linux/app}, mirar el Makefile y trigonometria.c
+

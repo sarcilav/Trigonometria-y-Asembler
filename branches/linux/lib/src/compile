@@ -1,0 +1,2 @@
+#!/bin/bash
+nasm -f elf -o trigo.o trigo.s && gcc -shared trigo.o -o libtrigo.so
